@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:todo/constants/colors.dart';
 import 'package:todo/constants/values.dart';
-import 'package:todo/screens/home_screen/widgets/progress_widget/widgets/category_label.dart';
 import 'package:todo/screens/home_screen/widgets/progress_widget/widgets/circular_progress.dart';
+import 'package:todo/screens/home_screen/widgets/progress_widget/widgets/labels_section.dart';
+
 
 class ProgressWidget extends StatelessWidget {
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,11 +28,7 @@ class ProgressWidget extends StatelessWidget {
             SizedBox(width: 20),
             Expanded(
               flex: 1,
-              child: CategoryLabel(
-                color: Colors.blue,
-                label: 'Meetings',
-                percentage: 34,
-              ),
+              child: LabelsSection(),
             ),
           ],
         ),

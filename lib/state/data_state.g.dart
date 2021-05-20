@@ -12,13 +12,13 @@ mixin _$DataState on _DataState, Store {
   final _$projectsAtom = Atom(name: '_DataState.projects');
 
   @override
-  List<Project> get projects {
+  ObservableList<Project> get projects {
     _$projectsAtom.reportRead();
     return super.projects;
   }
 
   @override
-  set projects(List<Project> value) {
+  set projects(ObservableList<Project> value) {
     _$projectsAtom.reportWrite(value, super.projects, () {
       super.projects = value;
     });

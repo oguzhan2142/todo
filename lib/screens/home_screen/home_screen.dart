@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:todo/constants/colors.dart';
+import 'package:todo/models/project.dart';
 import 'package:todo/screens/home_screen/widgets/progress_widget/progress_widget.dart';
+import 'package:todo/state/data_state.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -10,7 +12,9 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: AppColor.darker,
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColor.blue,
-        onPressed: () {},
+        onPressed: () {
+          DataState.state.addProject(Project(Colors.lime, 'Projem'));
+        },
       ),
       appBar: AppBar(
         backgroundColor: AppColor.darker,
