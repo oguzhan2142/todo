@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 import 'package:todo/constants/colors.dart';
 import 'package:todo/constants/values.dart';
 import 'package:todo/screens/home_screen/widgets/progress_widget/widgets/category_label.dart';
+import 'package:todo/screens/home_screen/widgets/progress_widget/widgets/circular_progress.dart';
 
 class ProgressWidget extends StatelessWidget {
   @override
@@ -17,11 +19,12 @@ class ProgressWidget extends StatelessWidget {
         padding: EdgeInsets.all(Values.cardPadding),
         child: Row(
           children: [
-            Flexible(
+            Expanded(
               flex: 1,
-              child: Container(),
+              child: CircularProgress(),
             ),
-            Flexible(
+            SizedBox(width: 20),
+            Expanded(
               flex: 1,
               child: CategoryLabel(
                 color: Colors.blue,

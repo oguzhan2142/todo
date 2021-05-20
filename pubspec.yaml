@@ -27,6 +27,8 @@ dependencies:
   flutter_mobx: ^2.0.0
   font_awesome_flutter: ^9.0.0
   mobx: ^2.0.1
+  pedantic: ^1.11.0
+  sleek_circular_slider: ^2.0.0
 
 dev_dependencies:
   flutter_test:
