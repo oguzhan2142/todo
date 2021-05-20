@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 import 'package:todo/constants/colors.dart';
 import 'package:todo/constants/values.dart';
 import 'package:todo/screens/home_screen/widgets/progress_widget/widgets/category_label.dart';
