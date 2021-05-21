@@ -5,6 +5,7 @@ import 'package:todo/constants/values.dart';
 import 'package:todo/models/project.dart';
 import 'package:todo/screens/home_screen/widgets/progress/progress.dart';
 import 'package:todo/screens/home_screen/widgets/projects/projects.dart';
+import 'package:todo/screens/home_screen/widgets/tasks/tasks.dart';
 import 'package:todo/state/data_state.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -39,28 +40,42 @@ class HomeScreen extends StatelessWidget {
           )
         ],
       ),
-      body: Padding(
+      body: Container(
         padding: const EdgeInsets.symmetric(
           horizontal: 20,
           vertical: 10,
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Progress(),
-            SizedBox(height: Values.spaceBetweenHomepageComponents),
-            Text(
-              'Projects',
-              style: TextStyle(
-                color: AppColor.white,
-                fontSize: Values.homeHeaderFontSize,
-                fontWeight: FontWeight.bold,
+        margin: EdgeInsets.only(bottom: 80),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Progress(),
+              SizedBox(height: Values.spaceBetweenHomepageComponents),
+              Text(
+                'Projects',
+                style: TextStyle(
+                  color: AppColor.white,
+                  fontSize: Values.homeHeaderFontSize,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            SizedBox(height: Values.spaceBetweenHomepageComponents),
-            Projects(),
-          ],
+              SizedBox(height: Values.spaceBetweenHomepageComponents),
+              Projects(),
+              SizedBox(height: Values.spaceBetweenHomepageComponents),
+              Text(
+                'Tasks',
+                style: TextStyle(
+                  color: AppColor.white,
+                  fontSize: Values.homeHeaderFontSize,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: Values.spaceBetweenHomepageComponents),
+              Tasks()
+            ],
+          ),
         ),
       ),
     );

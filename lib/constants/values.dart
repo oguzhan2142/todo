@@ -8,6 +8,8 @@ abstract class Values {
   static const spaceBetweenHomepageComponents = 30.0;
 
   static const pieIndicatorRadius = 36.0;
-  static const projectCardPadding = 10.0;
+  static const projectCardPadding = 16.0;
   static const projectCardHorizontalMargin = 10.0;
+
+  static const taskTileCheckOpacity = 0.3;
 }
