@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
+import 'package:todo/state/data_state.dart';
 
 class CircularProgress extends StatefulWidget {
   @override
@@ -9,7 +11,7 @@ class CircularProgress extends StatefulWidget {
 class _CircularProgressState extends State<CircularProgress> {
   final GlobalKey _key = GlobalKey();
   List<Widget> children = [];
-
+  late final width;
   final sizeDifferenceBetweenCircles = 30;
 
   @override
@@ -20,9 +22,9 @@ class _CircularProgressState extends State<CircularProgress> {
   }
 
   List<Widget> buildAllCircles() {
-    var width = _key.currentContext!.size!.width;
+    width = _key.currentContext!.size!.width;
 
-    return List.generate(5,
+    return List.generate(DataState.state.projects.length,
         (index) => buildCircle(width - index * sizeDifferenceBetweenCircles));
   }
 
@@ -31,6 +33,8 @@ class _CircularProgressState extends State<CircularProgress> {
       child: SleekCircularSlider(
         innerWidget: (percentage) => Container(),
         appearance: CircularSliderAppearance(
+          startAngle: 180,
+          counterClockwise: false,
           size: size,
           customWidths: CustomSliderWidths(progressBarWidth: 8),
           customColors: CustomSliderColors(
@@ -46,9 +50,16 @@ class _CircularProgressState extends State<CircularProgress> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      key: _key,
-      children: children,
+    return Observer(
+      builder: (context) {
+        return Stack(
+          key: _key,
+          children: List.generate(
+              DataState.state.projects.length,
+              (index) =>
+                  buildCircle(width - index * sizeDifferenceBetweenCircles)),
+        );
+      },
     );
   }
 }
