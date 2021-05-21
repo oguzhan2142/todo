@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:todo/constants/colors.dart';
 import 'package:todo/constants/values.dart';
-import 'package:todo/screens/home_screen/widgets/progress_widget/widgets/circular_progress.dart';
-import 'package:todo/screens/home_screen/widgets/progress_widget/widgets/labels_section.dart';
+import 'package:todo/screens/home_screen/widgets/progress/widgets/circular_progress.dart';
+import 'package:todo/screens/home_screen/widgets/progress/widgets/labels_section.dart';
 
 
-class ProgressWidget extends StatelessWidget {
+
+class Progress extends StatelessWidget {
 
 
   @override

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:todo/constants/colors.dart';
+import 'package:todo/constants/values.dart';
 import 'package:todo/models/project.dart';
-import 'package:todo/screens/home_screen/widgets/progress_widget/progress_widget.dart';
+import 'package:todo/screens/home_screen/widgets/progress/progress.dart';
+import 'package:todo/screens/home_screen/widgets/projects/projects.dart';
 import 'package:todo/state/data_state.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -43,7 +45,22 @@ class HomeScreen extends StatelessWidget {
           vertical: 10,
         ),
         child: Column(
-          children: [ProgressWidget()],
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Progress(),
+            SizedBox(height: Values.spaceBetweenHomepageComponents),
+            Text(
+              'Projects',
+              style: TextStyle(
+                color: AppColor.white,
+                fontSize: Values.homeHeaderFontSize,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: Values.spaceBetweenHomepageComponents),
+            Projects(),
+          ],
         ),
       ),
     );
