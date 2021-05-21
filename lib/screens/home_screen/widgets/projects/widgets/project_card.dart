@@ -16,6 +16,9 @@ class ProjectCard extends StatelessWidget {
       padding: EdgeInsets.all(Values.projectCardPadding),
       margin:
           EdgeInsets.symmetric(horizontal: Values.projectCardHorizontalMargin),
+      constraints: BoxConstraints(
+        minWidth: Values.MINIMUM_WIDT_PROJECT_CARD,
+      ),
       decoration: BoxDecoration(
         color: AppColor.lighter,
         borderRadius: BorderRadius.circular(Values.cardRadius),
