@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:todo/constants/values.dart';
 import 'package:todo/screens/calendar_screen/widgets/date_box.dart';
+import 'package:todo/state/date_picker_state.dart';
 
 class PickDay extends StatefulWidget {
   @override
@@ -10,9 +11,15 @@ class PickDay extends StatefulWidget {
 
 class _PickDayState extends State<PickDay> {
   final controller = ScrollController();
+  late final datePickerState;
+  final now = DateTime.now();
+  late final int days;
+
   @override
   void initState() {
     super.initState();
+    days = daysInMonth(now);
+    datePickerState = DatePickerState(days, now.day);
     WidgetsBinding.instance!.addPostFrameCallback((_) => jumpToCurrentDay());
   }
 
@@ -32,9 +39,7 @@ class _PickDayState extends State<PickDay> {
 
   @override
   Widget build(BuildContext context) {
-    var now = DateTime.now();
     var firstDayOfCurrentMonth = DateTime(now.year, now.month, 1);
-    var days = daysInMonth(now);
 
     return Container(
       height: 90,
@@ -43,10 +48,14 @@ class _PickDayState extends State<PickDay> {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           var datetime = firstDayOfCurrentMonth.add(Duration(days: index));
-
-          return DateBox(
-            dateTime: datetime,
-            isSelected: false,
+          return Observer(
+            builder: (_) => GestureDetector(
+              onTap: () => datePickerState.setSelected(index),
+              child: DateBox(
+                dateTime: datetime,
+                isSelected: datePickerState.isSelected[index],
+              ),
+            ),
           );
         },
         separatorBuilder: (context, index) => VerticalDivider(
