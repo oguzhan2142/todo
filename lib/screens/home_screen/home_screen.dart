@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:todo/constants/colors.dart';
 import 'package:todo/constants/values.dart';
 import 'package:todo/models/project.dart';
+import 'package:todo/screens/calendar_screen/calendar_screen.dart';
 import 'package:todo/screens/home_screen/widgets/progress/progress.dart';
 import 'package:todo/screens/home_screen/widgets/projects/projects.dart';
 import 'package:todo/screens/home_screen/widgets/tasks/tasks.dart';
@@ -42,7 +43,10 @@ class HomeScreen extends StatelessWidget {
           IconButton(
             color: AppColor.white,
             icon: Icon(FontAwesomeIcons.calendarAlt),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CalendarScreen()));
+            },
           )
         ],
       ),
