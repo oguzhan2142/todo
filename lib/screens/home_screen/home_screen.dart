@@ -48,7 +48,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(
-          horizontal: 20,
+          horizontal: Values.homeHorizontalMargin,
           vertical: 10,
         ),
         child: SingleChildScrollView(

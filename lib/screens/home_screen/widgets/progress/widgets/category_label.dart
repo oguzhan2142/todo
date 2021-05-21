@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:todo/constants/colors.dart';
 import 'package:todo/constants/values.dart';
+import 'package:todo/models/project.dart';
 
 class CategoryLabel extends StatelessWidget {
-  final Color color;
-  final String label;
-  final double percentage;
+  final Project project;
 
   const CategoryLabel({
     Key? key,
-    required this.color,
-    required this.label,
-    required this.percentage,
+    required this.project,
   }) : super(key: key);
 
   @override
@@ -27,12 +24,12 @@ class CategoryLabel extends StatelessWidget {
                 height: Values.categoryLabelRadius,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: color,
+                  color: project.color,
                 ),
               ),
               SizedBox(width: 8),
               Text(
-                label,
+                project.name,
                 style: TextStyle(
                   color: AppColor.white,
                   fontWeight: FontWeight.w400,
@@ -41,7 +38,7 @@ class CategoryLabel extends StatelessWidget {
             ],
           ),
           Text(
-            '%${percentage.toInt()}',
+            '%${(project.getPercentage() * 100).toInt()}',
             style: TextStyle(
               color: AppColor.white.withOpacity(0.7),
               fontWeight: FontWeight.w400,

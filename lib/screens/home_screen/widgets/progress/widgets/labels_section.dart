@@ -10,11 +10,7 @@ class LabelsSection extends StatelessWidget {
     return Observer(
       builder: (_) => Column(
         children: DataState.state.projects
-            .map((e) => CategoryLabel(
-                  color: Colors.lime,
-                  label: 'Meetings',
-                  percentage: 30,
-                ))
+            .map((e) => CategoryLabel(project: e))
             .toList(),
       ),
     );

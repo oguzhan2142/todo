@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
+import 'package:todo/constants/values.dart';
+import 'package:todo/models/project.dart';
 import 'package:todo/state/data_state.dart';
 
 class CircularProgress extends StatefulWidget {
@@ -15,35 +17,44 @@ class _CircularProgressState extends State<CircularProgress> {
   final sizeDifferenceBetweenCircles = 30;
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   void didChangeDependencies() {
-    WidgetsBinding.instance!.addPostFrameCallback(
-        (_) => setState(() => children = buildAllCircles()));
+    // WidgetsBinding.instance!.addPostFrameCallback(
+    //     (_) => setState(() => children = buildAllCircles()));
+    width = MediaQuery.of(context).size.width / 2 -
+        (1.5 * Values.cardPadding + Values.homeHorizontalMargin);
     super.didChangeDependencies();
   }
 
   List<Widget> buildAllCircles() {
-    width = _key.currentContext!.size!.width;
-
-    return List.generate(DataState.state.projects.length,
-        (index) => buildCircle(width - index * sizeDifferenceBetweenCircles));
+    return List.generate(
+        DataState.state.projects.length,
+        (index) => buildCircle(DataState.state.projects[index],
+            width - index * sizeDifferenceBetweenCircles));
   }
 
-  Widget buildCircle(double size) {
+  Widget buildCircle(Project project, double size) {
     return Center(
       child: SleekCircularSlider(
         innerWidget: (percentage) => Container(),
         appearance: CircularSliderAppearance(
           startAngle: 180,
           counterClockwise: false,
+          angleRange: 360,
           size: size,
           customWidths: CustomSliderWidths(progressBarWidth: 8),
           customColors: CustomSliderColors(
+            dotColor: Colors.transparent,
             dynamicGradient: false,
             trackColor: Colors.transparent,
-            progressBarColor: Colors.blue,
+            progressBarColor: project.color,
           ),
         ),
-        initialValue: 30,
+        initialValue: project.getPercentage() * 100,
       ),
     );
   }
@@ -53,11 +64,7 @@ class _CircularProgressState extends State<CircularProgress> {
     return Observer(
       builder: (context) {
         return Stack(
-          key: _key,
-          children: List.generate(
-              DataState.state.projects.length,
-              (index) =>
-                  buildCircle(width - index * sizeDifferenceBetweenCircles)),
+          children: buildAllCircles(),
         );
       },
     );

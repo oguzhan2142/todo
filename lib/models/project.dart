@@ -7,4 +7,10 @@ class Project {
   final List<Task> tasks = [];
 
   Project(this.color, this.name);
+
+  double getPercentage() {
+    var checkedTasks = tasks.where((element) => element.isChecked == true);
+    if (tasks.isEmpty) return 0;
+    return checkedTasks.length / tasks.length;
+  }
 }

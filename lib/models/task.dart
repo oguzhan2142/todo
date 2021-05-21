@@ -4,6 +4,6 @@ class Task {
 
   Task({
     required this.content,
-    required this.isChecked,
+    this.isChecked = false,
   });
 }
