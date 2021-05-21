@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todo/constants/colors.dart';
 import 'package:todo/screens/calendar_screen/widgets/calendar_app_bar.dart';
 import 'package:todo/screens/calendar_screen/widgets/pick_day.dart';
+import 'package:todo/screens/calendar_screen/widgets/timeline.dart';
 
 class CalendarScreen extends StatelessWidget {
   @override
@@ -17,6 +18,8 @@ class CalendarScreen extends StatelessWidget {
         children: [
           SizedBox(height: 40),
           PickDay(),
+          SizedBox(height: 40),
+          Expanded(child: TimeLine()),
         ],
       ),
     );
