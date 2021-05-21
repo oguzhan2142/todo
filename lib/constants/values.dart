@@ -19,4 +19,8 @@ abstract class Values {
   static const MINIMUM_WIDT_PROJECT_CARD = 160.0;
 
   static const defaultFloatingActionButtonSize = 56.0;
+
+  static const DATE_BOX_WIDTH = 80.0;
+  static const PICK_DATE_DIVIDER_WIDTH = 16.0;
+
 }
