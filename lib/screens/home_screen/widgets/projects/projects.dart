@@ -8,13 +8,9 @@ class Projects extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-        children: [
-          ProjectCard(),
-          ProjectCard(),
-          ProjectCard(),
-          ProjectCard(),
-        ],
-      ),
+          children: DataState.state.projects
+              .map((element) => ProjectCard(project: element))
+              .toList()),
     );
   }
 }

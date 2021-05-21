@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:pie_chart/pie_chart.dart';
-import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 import 'package:todo/constants/colors.dart';
 import 'package:todo/constants/values.dart';
+import 'package:todo/models/project.dart';
 import 'package:todo/screens/home_screen/widgets/projects/widgets/pie_progress_indicator.dart';
 import 'package:todo/screens/home_screen/widgets/projects/widgets/time_widget.dart';
 
 class ProjectCard extends StatelessWidget {
+  final Project project;
+
+  const ProjectCard({Key? key, required this.project}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,19 +25,19 @@ class ProjectCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           PieProgressIndicator(
-            color: Colors.deepOrangeAccent,
-            progress: 50,
+            color: project.color,
+            progress: project.getPercentage() * 100,
           ),
           SizedBox(height: 5),
           Text(
-            'Meetings',
+            project.name,
             style: TextStyle(
               color: AppColor.white.withOpacity(0.7),
             ),
           ),
           SizedBox(height: 14),
           Text(
-            'Amanda\'s Ruth',
+            project.getClosest().content,
             style: TextStyle(
               fontSize: 18,
               color: AppColor.white,

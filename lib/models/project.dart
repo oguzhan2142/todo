@@ -13,4 +13,11 @@ class Project {
     if (tasks.isEmpty) return 0;
     return checkedTasks.length / tasks.length;
   }
+
+  Task getClosest() {
+    var copyTasks = [];
+    copyTasks.addAll(tasks);
+    copyTasks.sort((a, b) => b.time.compareTo(a.time));
+    return tasks.first;
+  }
 }
