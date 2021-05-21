@@ -15,5 +15,7 @@ abstract class Values {
 
   static const taskTileCheckOpacity = 0.3;
 
+  static const verticalMarginBetweenLabels = 4.0;
+
   static const defaultFloatingActionButtonSize = 56.0;
 }

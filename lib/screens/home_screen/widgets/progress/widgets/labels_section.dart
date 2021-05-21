@@ -9,6 +9,7 @@ class LabelsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Observer(
       builder: (_) => Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: DataState.state.projects
             .map((e) => CategoryLabel(project: e))
             .toList(),

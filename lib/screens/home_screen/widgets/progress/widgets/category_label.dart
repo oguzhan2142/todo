@@ -14,6 +14,8 @@ class CategoryLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin:
+          EdgeInsets.symmetric(vertical: Values.verticalMarginBetweenLabels),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

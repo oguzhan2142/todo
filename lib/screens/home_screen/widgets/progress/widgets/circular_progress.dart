@@ -11,16 +11,11 @@ class CircularProgress extends StatefulWidget {
 }
 
 class _CircularProgressState extends State<CircularProgress> {
-  final GlobalKey _key = GlobalKey();
+
   List<Widget> children = [];
   late final width;
   final sizeDifferenceBetweenCircles = 30;
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
+  
   @override
   void didChangeDependencies() {
     // WidgetsBinding.instance!.addPostFrameCallback(

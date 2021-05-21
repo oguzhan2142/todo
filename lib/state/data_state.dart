@@ -19,6 +19,9 @@ class DataState extends _DataState with _$DataState {
     meetings.tasks.addAll([
       Task(content: 'birinci meeting'),
       Task(content: 'ikinci meeting', isChecked: true),
+      Task(content: 'ikinci meeting', isChecked: true),
+      Task(content: 'ikinci meeting', isChecked: true),
+      Task(content: 'ikinci meeting', isChecked: true),
     ]);
     projects.add(meetings);
   }
