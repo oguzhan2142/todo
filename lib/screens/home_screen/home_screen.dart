@@ -13,11 +13,17 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.darker,
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterFloat,
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColor.blue,
         onPressed: () {
           DataState.state.addProject(Project(Colors.lime, 'Projem'));
         },
+        child: Icon(
+          FontAwesomeIcons.plus,
+          color: AppColor.white,
+        ),
       ),
       appBar: AppBar(
         backgroundColor: AppColor.darker,
@@ -45,7 +51,6 @@ class HomeScreen extends StatelessWidget {
           horizontal: 20,
           vertical: 10,
         ),
-        margin: EdgeInsets.only(bottom: 80),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -73,7 +78,8 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: Values.spaceBetweenHomepageComponents),
-              Tasks()
+              Tasks(),
+              SizedBox(height: Values.defaultFloatingActionButtonSize),
             ],
           ),
         ),

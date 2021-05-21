@@ -9,8 +9,8 @@ class Tasks extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TaskTile(task: Task(content: 'asdasd')),
-        TaskTile(task: Task(content: 'iki')),
+        TaskTile(task: Task(content: 'asdasd', isChecked: true)),
+        TaskTile(task: Task(content: 'iki', isChecked: false)),
       ],
     );
   }

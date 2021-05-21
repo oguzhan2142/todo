@@ -12,4 +12,6 @@ abstract class Values {
   static const projectCardHorizontalMargin = 10.0;
 
   static const taskTileCheckOpacity = 0.3;
+
+  static const defaultFloatingActionButtonSize = 56.0;
 }

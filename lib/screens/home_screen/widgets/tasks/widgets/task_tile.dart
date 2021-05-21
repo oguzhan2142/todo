@@ -10,11 +10,15 @@ class TaskTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
+    return Container(
+      padding: const EdgeInsets.all(18.0),
+      margin: EdgeInsets.symmetric(vertical: 10),
+      decoration: BoxDecoration(
+        color: AppColor.lighter,
+        borderRadius: BorderRadius.circular(Values.cardRadius),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
         children: [
           Stack(
             alignment: Alignment.center,
@@ -28,13 +32,13 @@ class TaskTile extends StatelessWidget {
                     border: Border.all(
                       color: AppColor.white
                           .withOpacity(Values.taskTileCheckOpacity),
-                      width: 1.5,
+                      width: 2.5,
                     )),
               ),
               task.isChecked
                   ? Container(
-                      width: 14,
-                      height: 14,
+                      width: 13,
+                      height: 13,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: AppColor.white
