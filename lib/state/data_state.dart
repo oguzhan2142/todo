@@ -57,4 +57,14 @@ abstract class _DataState with Store {
     projects.add(project);
     print(projects.length);
   }
+
+  List<Task> getAllTasks() {
+    var list = <Task>[];
+
+    projects.forEach((element) {
+      list.addAll(element.tasks);
+    });
+    
+    return list;
+  }
 }
