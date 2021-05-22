@@ -23,4 +23,6 @@ abstract class Values {
   static const DATE_BOX_WIDTH = 80.0;
   static const PICK_DATE_DIVIDER_WIDTH = 16.0;
 
+  static const TIMELINE_HEIGHT = 60.0;
+  static const TIMELINE_HOURS_FONT_SIZE = 14.0;
 }

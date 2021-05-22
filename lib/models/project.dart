@@ -17,7 +17,7 @@ class Project {
   Task getClosest() {
     var copyTasks = [];
     copyTasks.addAll(tasks);
-    copyTasks.sort((a, b) => b.time.compareTo(a.time));
+    copyTasks.sort((a, b) => b.startTime.compareTo(a.startTime));
     return tasks.first;
   }
 }

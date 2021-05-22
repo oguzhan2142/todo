@@ -1,20 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:todo/constants/values.dart';
+import 'package:todo/models/task.dart';
 
 class TimelineCard extends StatelessWidget {
-  final space = 24.0;
+  final Task task;
+  final Color color;
+
+  const TimelineCard({
+    Key? key,
+    required this.color,
+    required this.task,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      top: space * 5 + 61 * 4,
-      child: Container(
-        margin: EdgeInsets.only(left: 60),
-        height: 61,
-        width: 200,
-        decoration: BoxDecoration(
-          color: Colors.lime,
-          borderRadius: BorderRadius.circular(10),
-        ),
+    return Container(
+      margin: EdgeInsets.only(left: 50, right: 20, top: 15),
+      height: 60,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(10),
       ),
     );
   }

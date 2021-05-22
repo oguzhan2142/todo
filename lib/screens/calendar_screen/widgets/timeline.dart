@@ -1,60 +1,100 @@
 import 'package:flutter/material.dart';
-import 'package:todo/constants/colors.dart';
-import 'package:todo/screens/calendar_screen/widgets/timeline_card.dart';
+import 'package:todo/models/task.dart';
 
-class TimeLine extends StatelessWidget {
-  String getClockText(int index) {
-    var value = index / 61;
-    var buffer = StringBuffer();
-    if (value > 12) {
-      var convertedValue = (value % 12).toInt();
-      buffer.write(convertedValue.toString());
-      buffer.write(' pm');
-    } else {
-      var convertedValue = value.toInt();
-      buffer.write(convertedValue.toString());
-      buffer.write(' am');
+class TimeLine extends StatefulWidget {
+  @override
+  _TimeLineState createState() => _TimeLineState();
+}
+
+class _TimeLineState extends State<TimeLine> {
+  final tasks = <Task>[
+    Task(
+      content: 'content 2',
+      startTime: DateTime(2021, 1, 1, 1, 0),
+      endTime: DateTime(2021, 1, 1, 1, 30),
+    ),
+    Task(
+      startTime: DateTime(2021, 1, 1, 5, 0),
+      content: 'content',
+      endTime: DateTime(2021, 1, 1, 7, 30),
+    ),
+  ];
+
+  late final children = <Widget>[];
+
+  @override
+  void initState() {
+    tasks.sort((a, b) => a.startTime.compareTo(b.startTime));
+    var counter = 0;
+    for (var index = 0; index < 2 * tasks.length + 1; index++) {
+      var task = tasks[counter];
+
+      var diff = task.endTime.difference(task.startTime).inMinutes;
+      if (index % 2 == 0) {
+        var space;
+
+        if (index == 0) {
+          space = task.startTime.minute + task.startTime.hour * 60;
+        } else if (index == 2 * tasks.length) {
+          space = 24 * 60 - (task.endTime.minute + task.endTime.hour * 60);
+        } else {
+          var beforeTask = tasks[counter - 1];
+
+          space = task.startTime.difference(beforeTask.endTime).inMinutes;
+        }
+        print('flex in space $space');
+        children.add(Flexible(
+          flex: space,
+          child: Container(),
+        ));
+      } else {
+        if (counter < tasks.length - 1) {
+          counter++;
+        }
+        print('flex in card $diff');
+        children.add(Flexible(
+          flex: diff,
+          child: Container(
+            margin: EdgeInsets.only(left: 50, right: 20),
+            width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.lime,
+            ),
+          ),
+        ));
+      }
     }
-
-    return buffer.toString().padLeft(5);
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+    return SingleChildScrollView(
       child: Stack(
         children: [
-          ListView.builder(
-            itemCount: 24 * 60 + 24,
-            itemBuilder: (context, index) {
-              if (index % 61 == 0) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 4),
-                  child: Row(
-                    children: [
-                      Text(
-                        getClockText(index),
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          color: AppColor.white.withOpacity(0.6),
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Expanded(
-                        child: Divider(
-
-                          color: AppColor.white.withOpacity(0.4),
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              }
-              return Container(height: 1);
-            },
+          Container(
+            width: double.infinity,
+            height: 24 * 60,
+            child: Column(
+              children: children,
+            ),
           ),
-          TimelineCard(),
+          Container(
+            height: 24 * 60,
+            child: Column(
+              children: List.generate(
+                24,
+                (index) => Container(
+                  padding: EdgeInsets.only(bottom: 60 - 14),
+                  child: Text(
+                    index.toString(),
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

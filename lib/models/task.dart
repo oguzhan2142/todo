@@ -1,17 +1,19 @@
 class Task {
   final String content;
-  final DateTime time;
+  final DateTime startTime;
+  final DateTime endTime;
   final bool isChecked;
 
   Task({
-    required this.time,
+    required this.startTime,
     required this.content,
+    required this.endTime,
     this.isChecked = false,
   });
 
   @override
   String toString() {
-    
-    return content;
+    return content +
+        'start: ${startTime.toString()} end: ${endTime.toString()}';
   }
 }

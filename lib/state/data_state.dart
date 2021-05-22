@@ -12,11 +12,14 @@ class DataState extends _DataState with _$DataState {
       Task(
           content: 'birinci gorev',
           isChecked: true,
-          time: DateTime.fromMillisecondsSinceEpoch(34000000000)),
+          endTime: DateTime.fromMillisecondsSinceEpoch(40000000000),
+          startTime: DateTime.fromMillisecondsSinceEpoch(34000000000)),
       Task(
-          content: 'ikinci gorev',
-          isChecked: true,
-          time: DateTime.fromMillisecondsSinceEpoch(40000000000)),
+        content: 'ikinci gorev',
+        isChecked: true,
+        startTime: DateTime.fromMillisecondsSinceEpoch(40000000000),
+        endTime: DateTime.fromMillisecondsSinceEpoch(40000000000),
+      ),
     ]);
 
     projects.add(projem);
@@ -25,23 +28,28 @@ class DataState extends _DataState with _$DataState {
     meetings.tasks.addAll([
       Task(
           content: 'birinci meeting',
-          time: DateTime.fromMillisecondsSinceEpoch(20000000000)),
+          endTime: DateTime.fromMillisecondsSinceEpoch(40000000000),
+          startTime: DateTime.fromMillisecondsSinceEpoch(20000000000)),
       Task(
           content: '2 meeting',
           isChecked: true,
-          time: DateTime.fromMillisecondsSinceEpoch(30000000000)),
+          endTime: DateTime.fromMillisecondsSinceEpoch(40000000000),
+          startTime: DateTime.fromMillisecondsSinceEpoch(30000000000)),
       Task(
           content: '3 meeting',
           isChecked: true,
-          time: DateTime.fromMillisecondsSinceEpoch(40000000000)),
+          endTime: DateTime.fromMillisecondsSinceEpoch(40000000000),
+          startTime: DateTime.fromMillisecondsSinceEpoch(40000000000)),
       Task(
           content: '4 meeting',
           isChecked: true,
-          time: DateTime.fromMillisecondsSinceEpoch(23000000000)),
+          endTime: DateTime.fromMillisecondsSinceEpoch(40000000000),
+          startTime: DateTime.fromMillisecondsSinceEpoch(23000000000)),
       Task(
           content: '5 meeting',
           isChecked: true,
-          time: DateTime.fromMillisecondsSinceEpoch(50000000000)),
+          endTime: DateTime.fromMillisecondsSinceEpoch(40000000000),
+          startTime: DateTime.fromMillisecondsSinceEpoch(50000000000)),
     ]);
     projects.add(meetings);
   }
@@ -64,7 +72,7 @@ abstract class _DataState with Store {
     projects.forEach((element) {
       list.addAll(element.tasks);
     });
-    
+
     return list;
   }
 }
