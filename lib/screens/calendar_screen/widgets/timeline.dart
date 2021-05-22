@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo/constants/colors.dart';
+import 'package:todo/screens/calendar_screen/widgets/timeline_card.dart';
 
 class TimeLine extends StatelessWidget {
   String getClockText(int index) {
@@ -22,33 +23,39 @@ class TimeLine extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: ListView.builder(
-        itemCount: 24 * 60 + 24,
-        itemBuilder: (context, index) {
-          if (index % 61 == 0) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4),
-              child: Row(
-                children: [
-                  Text(
-                    getClockText(index),
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                      color: AppColor.white.withOpacity(0.6),
-                    ),
+      child: Stack(
+        children: [
+          ListView.builder(
+            itemCount: 24 * 60 + 24,
+            itemBuilder: (context, index) {
+              if (index % 61 == 0) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4),
+                  child: Row(
+                    children: [
+                      Text(
+                        getClockText(index),
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          color: AppColor.white.withOpacity(0.6),
+                        ),
+                      ),
+                      SizedBox(width: 10),
+                      Expanded(
+                        child: Divider(
+
+                          color: AppColor.white.withOpacity(0.4),
+                        ),
+                      ),
+                    ],
                   ),
-                  SizedBox(width: 10),
-                  Expanded(
-                    child: Divider(
-                      color: AppColor.white.withOpacity(0.4),
-                    ),
-                  ),
-                ],
-              ),
-            );
-          }
-          return Container(height: 1);
-        },
+                );
+              }
+              return Container(height: 1);
+            },
+          ),
+          TimelineCard(),
+        ],
       ),
     );
   }
