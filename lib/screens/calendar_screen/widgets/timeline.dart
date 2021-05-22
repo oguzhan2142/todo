@@ -82,14 +82,19 @@ class _TimeLineState extends State<TimeLine> {
           ),
           Container(
             height: 24 * 60,
+            color: Colors.blueAccent,
             child: Column(
               children: List.generate(
                 24,
-                (index) => Container(
-                  padding: EdgeInsets.only(bottom: 60 - 14),
-                  child: Text(
-                    index.toString(),
-                    style: TextStyle(color: Colors.white),
+                (index) => Expanded(
+                  flex: 1,
+                  child: Container(
+                    color: Colors.red,
+                    width: double.infinity,
+                    child: Text(
+                      index.toString(),
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ),
               ),
