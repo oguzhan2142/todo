@@ -7,18 +7,19 @@ part 'data_state.g.dart';
 
 class DataState extends _DataState with _$DataState {
   DataState._() {
-    var projem = Project(Colors.blue, 'Projem');
+    var projem = Project(Colors.blue, 'Project');
     projem.tasks.addAll([
       Task(
-          content: 'birinci gorev',
-          isChecked: true,
-          endTime: DateTime.fromMillisecondsSinceEpoch(40000000000),
-          startTime: DateTime.fromMillisecondsSinceEpoch(34000000000)),
-      Task(
-        content: 'ikinci gorev',
+        content: 'task 1',
         isChecked: true,
-        startTime: DateTime.fromMillisecondsSinceEpoch(40000000000),
-        endTime: DateTime.fromMillisecondsSinceEpoch(40000000000),
+        startTime: DateTime(2021, 1, 1, 1, 0),
+        endTime: DateTime(2021, 1, 1, 1, 30),
+      ),
+      Task(
+        content: 'task 2',
+        isChecked: true,
+        startTime: DateTime(2021, 1, 1, 5, 0),
+        endTime: DateTime(2021, 1, 1, 7, 30),
       ),
     ]);
 
@@ -27,29 +28,16 @@ class DataState extends _DataState with _$DataState {
     var meetings = Project(Colors.green, 'Toplantilar');
     meetings.tasks.addAll([
       Task(
-          content: 'birinci meeting',
-          endTime: DateTime.fromMillisecondsSinceEpoch(40000000000),
-          startTime: DateTime.fromMillisecondsSinceEpoch(20000000000)),
+        content: 'birinci meeting',
+        startTime: DateTime(2021, 1, 1, 1, 0),
+        endTime: DateTime(2021, 1, 1, 1, 30),
+      ),
       Task(
-          content: '2 meeting',
-          isChecked: true,
-          endTime: DateTime.fromMillisecondsSinceEpoch(40000000000),
-          startTime: DateTime.fromMillisecondsSinceEpoch(30000000000)),
-      Task(
-          content: '3 meeting',
-          isChecked: true,
-          endTime: DateTime.fromMillisecondsSinceEpoch(40000000000),
-          startTime: DateTime.fromMillisecondsSinceEpoch(40000000000)),
-      Task(
-          content: '4 meeting',
-          isChecked: true,
-          endTime: DateTime.fromMillisecondsSinceEpoch(40000000000),
-          startTime: DateTime.fromMillisecondsSinceEpoch(23000000000)),
-      Task(
-          content: '5 meeting',
-          isChecked: true,
-          endTime: DateTime.fromMillisecondsSinceEpoch(40000000000),
-          startTime: DateTime.fromMillisecondsSinceEpoch(50000000000)),
+        content: '2. meeting',
+        isChecked: true,
+        startTime: DateTime(2021, 1, 1, 5, 0),
+        endTime: DateTime(2021, 1, 1, 7, 30),
+      ),
     ]);
     projects.add(meetings);
   }
