@@ -63,7 +63,7 @@ class _TimeLineState extends State<TimeLine> {
             flex: diff,
             fit: FlexFit.tight,
             child: Container(
-              margin: EdgeInsets.only(left: 50, right: 20),
+              margin: EdgeInsets.only(left: 80, right: 20),
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
@@ -138,6 +138,13 @@ class _TimeLineState extends State<TimeLine> {
                 var height = index % 2 == 0 ? labelHeight : cardHeight;
                 if (index % 2 == 0) {
                   var hour = index ~/ 2;
+                  var buffer = StringBuffer(hour.toString());
+
+                  if (hour > 12) {
+                    buffer.write(' pm');
+                  } else {
+                    buffer.write(' am');
+                  }
 
                   return Container(
                     margin: EdgeInsets.symmetric(horizontal: 10),
@@ -145,9 +152,9 @@ class _TimeLineState extends State<TimeLine> {
                     height: height,
                     // color: Colors.red,
                     child: Text(
-                      '',
+                      buffer.toString(),
                       style: TextStyle(
-                        color: AppColor.white,
+                        color: AppColor.white.withOpacity(0.6),
                       ),
                     ),
                   );
